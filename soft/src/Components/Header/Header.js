@@ -6,7 +6,7 @@ import { CgProfile } from "react-icons/cg";
 import "./Header.css";
 
 import Profile from "../Profile/Profile";
-import Project from "../Projects/Project";
+import Project from "../Projects/Project/Project";
 import Lion from "../../images/LION.png";
 
 function Header() {

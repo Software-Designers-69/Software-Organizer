@@ -1,4 +1,5 @@
 import * as React from "react";
+import {useState,useEffect} from 'react';
 import Box from "@mui/material/Box";
 import Avatar from "@mui/material/Avatar";
 import Menu from "@mui/material/Menu";
@@ -15,9 +16,11 @@ import Folder from "@mui/icons-material/Folder";
 import AddBoxIcon from "@mui/icons-material/AddBox";
 import Paper from "@mui/material/Paper";
 import { Link } from "react-router-dom";
+import { db } from "../../../firebase";
+import { doc, getDoc } from "firebase/firestore";
 import "./Project.css";
 
-export default function AccountMenu() {
+export default function Project() {
   const [anchorEl, setAnchorEl] = React.useState(null);
   const open = Boolean(anchorEl);
   const handleClick = (event) => {
@@ -26,6 +29,40 @@ export default function AccountMenu() {
   const handleClose = () => {
     setAnchorEl(null);
   };
+  const docRef = doc(db, "Projects", "4oYuLCC89oM4nekdkqhI");
+  const fun = async () => {
+    try {
+      const docSnap = await getDoc(docRef);
+      if (docSnap.exists()) {
+        console.log(docSnap.data().ProjectMembers[0]);
+      } else {
+        console.log("Document does not exist");
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  const [projects, setProjects] = useState([]);
+
+  const fetchProjects = async () => {
+    // const response = db.collection("Projects");
+    const docRef = doc(db, "Projects", "4oYuLCC89oM4nekdkqhI");
+
+    // const data = await response.get();
+    const data = await getDoc(docRef);
+
+
+    data.forEach((project) => {
+      setProjects([...projects, project.data()]);
+    });
+  };
+
+  useEffect(() => {
+    fetchProjects();
+    console.log(projects);
+  }, []);
+
   return (
     <React.Fragment>
       <Box sx={{ display: "flex", alignItems: "center", textAlign: "center" }}>
@@ -92,7 +129,7 @@ export default function AccountMenu() {
       >
         <MenuItem>
           <Avatar variant="square">P</Avatar>
-          Project 1
+          Project 1{}
         </MenuItem>
         <MenuItem>
           <Avatar variant="square">P</Avatar>

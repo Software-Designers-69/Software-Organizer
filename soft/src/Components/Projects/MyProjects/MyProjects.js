@@ -9,7 +9,7 @@ import Card from "@mui/material/Card";
 import Button from "@mui/material/Button";
 import Avatar from "@mui/material/Avatar";
 import Divider from "@mui/material/Divider";
-import Header from "../Header/Header";
+import Header from "../../Header/Header";
 import "./MyProjects.css";
 
 export default function CheckboxListSecondary() {
