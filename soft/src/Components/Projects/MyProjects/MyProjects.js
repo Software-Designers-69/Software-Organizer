@@ -1,4 +1,5 @@
 import * as React from "react";
+import { useState, useEffect } from "react";
 import List from "@mui/material/List";
 import ListItem from "@mui/material/ListItem";
 import ListItemButton from "@mui/material/ListItemButton";
@@ -10,10 +11,16 @@ import Button from "@mui/material/Button";
 import Avatar from "@mui/material/Avatar";
 import Divider from "@mui/material/Divider";
 import Header from "../../Header/Header";
+import { doc, getDoc } from "firebase/firestore";
+import { db } from "../../../firebase";
 import "./MyProjects.css";
 
 export default function CheckboxListSecondary() {
+  const [project, setProject] = useState([]);
   const [checked, setChecked] = React.useState([1]);
+  window.addEventListener("load", () => {
+    fun();
+  });
   const handleToggle = (value) => () => {
     const currentIndex = checked.indexOf(value);
     const newChecked = [...checked];
@@ -26,6 +33,18 @@ export default function CheckboxListSecondary() {
 
     setChecked(newChecked);
   };
+
+  const fun = async () => {
+    const docRef = doc(db, "Projects", "4oYuLCC89oM4nekdkqhI");
+    const docSnap = await getDoc(docRef);
+
+    if (docSnap.exists()) {
+      setProject([...project, docSnap.data()]);
+    }
+  };
+  useEffect(() => {
+    fun();
+  }, []);
 
   return (
     <div>
@@ -49,28 +68,35 @@ export default function CheckboxListSecondary() {
         </div>
       </Card>
       <List dense sx={{ width: "100%", bgcolor: "background.paper" }}>
-        {[0, 1, 2, 3].map((value) => {
-          const labelId = `checkbox-list-secondary-label-${value}`;
-          const lis = ["Tisetso", " Prime", " Thulasizwe", " Tsepiso"];
-          return (
-            <div>
-              {" "}
-              <ListItem key={value} disablePadding>
-                <ListItemButton>
-                  <ListItemAvatar>
-                    <Avatar>P</Avatar>
-                  </ListItemAvatar>
-                  <ListItemText
-                    id={labelId}
-                    primary={`Project ${value + 1}`}
-                    secondary={lis + ","}
-                  />
-                </ListItemButton>
-              </ListItem>
-              <Divider sx={{ width: "80%" }} />
-            </div>
-          );
-        })}
+        <div>
+          {" "}
+          <ListItem key={""} disablePadding>
+            <ListItemButton>
+              <ListItemAvatar>
+                <Avatar>
+                  {project.length != 0 ? project[0].ProjectName[0] : "P"}
+                </Avatar>
+              </ListItemAvatar>
+              <ListItemText
+                primary={
+                  project.length != 0 ? project[0].ProjectName : "Unavailable"
+                }
+                secondary={
+                  project.length != 0
+                    ? project[0].ProjectMembers.map((member, index) => {
+                        let v = "";
+                        index == project[0].ProjectMembers.length - 1
+                          ? (v = ".")
+                          : (v = ", ");
+                        return member + v;
+                      })
+                    : ""
+                }
+              />
+            </ListItemButton>
+          </ListItem>
+          <Divider sx={{ width: "80%" }} />
+        </div>
       </List>
     </div>
   );

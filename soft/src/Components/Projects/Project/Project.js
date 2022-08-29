@@ -1,5 +1,5 @@
 import * as React from "react";
-import {useState,useEffect} from 'react';
+import { useState, useEffect } from "react";
 import Box from "@mui/material/Box";
 import Avatar from "@mui/material/Avatar";
 import Menu from "@mui/material/Menu";
@@ -21,7 +21,11 @@ import { doc, getDoc } from "firebase/firestore";
 import "./Project.css";
 
 export default function Project() {
+  const [project, setProject] = useState([]);
   const [anchorEl, setAnchorEl] = React.useState(null);
+  window.addEventListener("load", () => {
+    fun();
+  });
   const open = Boolean(anchorEl);
   const handleClick = (event) => {
     setAnchorEl(event.currentTarget);
@@ -29,38 +33,17 @@ export default function Project() {
   const handleClose = () => {
     setAnchorEl(null);
   };
-  const docRef = doc(db, "Projects", "4oYuLCC89oM4nekdkqhI");
+
   const fun = async () => {
-    try {
-      const docSnap = await getDoc(docRef);
-      if (docSnap.exists()) {
-        console.log(docSnap.data().ProjectMembers[0]);
-      } else {
-        console.log("Document does not exist");
-      }
-    } catch (error) {
-      console.log(error);
+    const docRef = doc(db, "Projects", "4oYuLCC89oM4nekdkqhI");
+    const docSnap = await getDoc(docRef);
+
+    if (docSnap.exists()) {
+      setProject([...project, docSnap.data()]);
     }
   };
-
-  const [projects, setProjects] = useState([]);
-
-  const fetchProjects = async () => {
-    // const response = db.collection("Projects");
-    const docRef = doc(db, "Projects", "4oYuLCC89oM4nekdkqhI");
-
-    // const data = await response.get();
-    const data = await getDoc(docRef);
-
-
-    data.forEach((project) => {
-      setProjects([...projects, project.data()]);
-    });
-  };
-
   useEffect(() => {
-    fetchProjects();
-    console.log(projects);
+    fun();
   }, []);
 
   return (
@@ -128,17 +111,17 @@ export default function Project() {
         anchorOrigin={{ horizontal: "right", vertical: "bottom" }}
       >
         <MenuItem>
-          <Avatar variant="square">P</Avatar>
-          Project 1{}
-        </MenuItem>
-        <MenuItem>
-          <Avatar variant="square">P</Avatar>
-          Project 2
+          <Avatar variant="square">
+            {project.length != 0 ? project[0].ProjectName[0] : "P"}
+          </Avatar>
+          {project.length != 0 ? project[0].ProjectName : ""}
         </MenuItem>
         <Divider />
         <MenuItem>
           <Link to="/myprojects" class="link">
+           <Typography>
             Show all projects
+            </Typography>
           </Link>
         </MenuItem>
         <MenuItem>
