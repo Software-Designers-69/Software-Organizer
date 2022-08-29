@@ -74,7 +74,7 @@ export default function CheckboxListSecondary() {
             <ListItemButton>
               <ListItemAvatar>
                 <Avatar>
-                  {project.length != 0 ? project[0].ProjectName[0] : "P"}
+                  {project.length != 0 ? project[0].ProjectName[0] : "U"}
                 </Avatar>
               </ListItemAvatar>
               <ListItemText

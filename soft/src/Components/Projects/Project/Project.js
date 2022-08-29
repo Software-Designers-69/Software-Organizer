@@ -112,7 +112,7 @@ export default function Project() {
       >
         <MenuItem>
           <Avatar variant="square">
-            {project.length != 0 ? project[0].ProjectName[0] : "P"}
+            {project.length != 0 ? project[0].ProjectName[0] : "U"}
           </Avatar>
           {project.length != 0 ? project[0].ProjectName : ""}
         </MenuItem>
