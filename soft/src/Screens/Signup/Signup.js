@@ -9,6 +9,8 @@ import { db } from '../../firebase';
 import { collection, getDocs, addDoc } from "firebase/firestore";
 import emailjs from 'emailjs-com';          // library used to send users emails
 import project_management from "../../images/project_management.png";
+import github from "../../images/github.png";
+import gmail from "../../images/gmail.png";
 
 function Login() {
     let navigate = useNavigate();
@@ -81,9 +83,13 @@ function Login() {
                         <input className='login-input' placeholder="full Name" onChange={Setname}/><br/>      
                         <input className='login-input' placeholder="Email" onChange={Setemail}/><br/>      
                         <input className='login-input'  placeholder="Password" onChange={Setpassword}/> <br/>                        
-                        <button class="Loginbutton" onClick={OnSignup}>Sign-Up</button><br/>
-                        <button class="Loginbutton" >Sign-Up With GitHub</button><br/>
-                        <button class="Loginbutton" >Sign-Up With GitLab</button><br/>
+                        <button class="signup-button" onClick={OnSignup}>Sign-Up</button><br/>
+                        <button class="Loginbutton" >Sign-Up With GitHub</button>
+                        <img src={github} />                         
+                        <br />
+                        <button class="Loginbutton" >Sign-Up With Gmail</button>
+                            <img src={gmail} />                         
+                        <br/>
                     </div>
                 </div>
                 <div>

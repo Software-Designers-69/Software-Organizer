@@ -12,10 +12,9 @@
 
 .centre img {
     
-    height: 120px;
-    width: 120px;
-    margin-left: 30px;
-    margin-top: 30px;
+    height: 27px;
+    width: 27px;
+    
 }
 
 .Loginbutton {
@@ -29,11 +28,23 @@
     font-family: 'Trebuchet MS';
     font-size: 18px;
 }
+.signup-button {
+    background-color: coral;
+    border: 0px;
+    border-width: 1px 1px 1px 1px;
+    height: 30px;
+    width: 210px;
+    margin-top: 20px;
+    border-radius: 30px;
+    font-family: 'Trebuchet MS';
+    font-size: 18px;
+}
 
 .Loginbutton:hover {
     
     text-decoration: underline;
 }
+
 .login-input{
 
         background-color: transparent;
@@ -104,5 +115,7 @@
     text-align: center;
     margin-left: 80px;
 }
+
+
 
 
