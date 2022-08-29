@@ -41,3 +41,12 @@ header {
     color: #8E0808;
     font-size: 60px;
 }
+
+@import url('https://fonts.googleapis.com/css2?family=Anton&family=Silkscreen&display=swap');
+
+.software {
+    font-family: 'Anton';
+    font-style: bold;
+    color: #8E0808;
+    font-size: 18px;
+}
