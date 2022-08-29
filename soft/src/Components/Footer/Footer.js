@@ -1,19 +1,21 @@
-import './Footer.css';
+import "./Footer.css";
 
-function Footer(){
-    return (
-        <div className="Footer">
-            <footer>
-                <p className="footer-text">
-                    W3Schools is optimized for learning and training. Examples might be simplified to improve reading and learning. Tutorials, references, and examples are constantly reviewed to avoid errors, but we cannot warrant full correctness of all content. While using W3Schools, you agree to have read and accepted our terms of use, cookie and privacy policy.
-                </p>
-                <p className="footer-text">
-                    Copyright 1999-2022 by Refsnes Data. All Rights Reserved.
-                    W3Schools is Powered by W3.CSS.
-                </p>
-            </footer>
-        </div>
-    );
+function Footer() {
+  return (
+    <div className="Footer">
+      <footer>
+        <p className="footer-text">
+          Welcome to Wits Software Organizer where we will be designing and
+          implementing the Kanban-based platform for organizing large software
+          projects, in the vein of Taiga or Trello. You agree to have read and
+          accepted our terms of use, cookie and privacy policy.
+        </p>
+        <p className="footer-text">
+          Copyright&copy; 1999-2022 by Lion Data. All Rights Reserved.
+        </p>
+      </footer>
+    </div>
+  );
 }
 
 export default Footer;
