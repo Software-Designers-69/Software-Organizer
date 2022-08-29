@@ -7,12 +7,15 @@ import "./Header.css";
 
 import Profile from "../Profile/Profile";
 import Project from "../Projects/Project";
+import Lion from "../../images/LION.ico";
 
 function Header() {
   return (
     <div className="Header">
       <header className="App-header">
         <div className="left-header">
+          <img src={Lion} width="35" />
+          <p class="software">&nbsp;Lion</p>
           <Project />
         </div>
         <div className="right-header">
