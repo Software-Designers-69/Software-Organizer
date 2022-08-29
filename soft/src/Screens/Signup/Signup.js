@@ -47,7 +47,7 @@ function Login() {
         .catch((error) => {
             const errorCode = error.code;
             const errorMessage = error.message;
-            console.alert(error)                      //temporary to show error message
+            alert(error)                      //temporary to show error message
         });
     }
 
@@ -67,7 +67,7 @@ function Login() {
           };
 
         emailjs.send('service_ew7io57', 'template_3p2jaur', details).then(function (res) {
-          alert("sign-up successful");
+          
       },
         reason => {
         alert("Invalid user email or internet connection is low");

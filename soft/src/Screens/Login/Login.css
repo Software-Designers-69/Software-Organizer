@@ -39,7 +39,10 @@
     font-family: 'Trebuchet MS';
     font-size: 18px;
 }
-
+.signup-button:hover {
+    
+    text-decoration: underline;
+}
 .Loginbutton:hover {
     
     text-decoration: underline;
