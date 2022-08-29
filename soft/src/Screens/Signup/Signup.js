@@ -2,11 +2,13 @@ import { useNavigate } from 'react-router-dom';
 import { useState ,useEffect } from 'react';
 import Header from '../../Components/Header/Header';
 import Footer from '../../Components/Footer/Footer';
+import '../Login/Login.css';
 import './Signup.css';
 import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword } from "firebase/auth";
 import { db } from '../../firebase';
 import { collection, getDocs, addDoc } from "firebase/firestore";
 import emailjs from 'emailjs-com';          // library used to send users emails
+import project_management from "../../images/project_management.png";
 
 function Login() {
     let navigate = useNavigate();
@@ -49,7 +51,7 @@ function Login() {
 
     const addressRef = collection(db, "Users");                        //reference to the user collection
     const addDetails = async () => {                            //handles adding an item to database
-      await addDoc(addressRef, { Name: name, Email:email ,Password :password })  
+      await addDoc(addressRef, { Email:email , Name:name ,Password :password })  
     }
 
     function sendemail() {
@@ -57,13 +59,13 @@ function Login() {
         emailjs.init(userid);
 
         var details = {
-        email: name               // user email
-                      /* data which will be needed from template may be extracted from here,
+            email: email,               // user email
+            to_name: name          /* data which will be needed from template may be extracted from here,
                          e.i ( name of user or subject of email)                   */  
           };
 
-        emailjs.send('service_ew7io57', 'template_25ddejk', details).then(function (res) {
-          //lert("Your transaction was successful , continue buying");
+        emailjs.send('service_ew7io57', 'template_3p2jaur', details).then(function (res) {
+          alert("sign-up successful");
       },
         reason => {
         alert("Invalid user email or internet connection is low");
@@ -78,14 +80,18 @@ function Login() {
                     <div className="centre"><br />
                         <input className='login-input' placeholder="full Name" onChange={Setname}/><br/>      
                         <input className='login-input' placeholder="Email" onChange={Setemail}/><br/>      
-                        <input className='login-input'  placeholder="Password" onChange={Setpassword}/> <br/>
-                        
+                        <input className='login-input'  placeholder="Password" onChange={Setpassword}/> <br/>                        
                         <button class="Loginbutton" onClick={OnSignup}>Sign-Up</button><br/>
                         <button class="Loginbutton" >Sign-Up With GitHub</button><br/>
                         <button class="Loginbutton" >Sign-Up With GitLab</button><br/>
                     </div>
                 </div>
-                <div className='anime'></div>
+                <div>
+                    <p class="text">Start Your first Project!</p>
+                    <div className='background'>
+                        <img width={512} src={project_management} />
+                    </div>
+                </div>
             </div>
         
         </div>

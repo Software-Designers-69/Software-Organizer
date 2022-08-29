@@ -16,7 +16,7 @@ function SplashScreen() {
   let navigate = useNavigate();
 
   const routeChange = () => {
-    let path = "/page2";
+    let path = "/Signup";
     navigate(path);
   };
 

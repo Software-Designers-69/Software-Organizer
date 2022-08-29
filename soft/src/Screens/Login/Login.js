@@ -5,7 +5,7 @@ import Footer from '../../Components/Footer/Footer';
 import './Login.css';
 import { loginmethod} from '../../firebase';
 import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword } from "firebase/auth";
-
+import project_management from "../../images/project_management.png";
 function Login() {
     let navigate = useNavigate();
     let password , email ;
@@ -76,7 +76,12 @@ function Login() {
                         <button class="Loginbutton" onClick={OnLogin}>Login</button>
                     </div>
                 </div>
-                <div className='background'></div>
+               <div>
+                    <p class="txt-login">Optimize Flexibility and Efficiency</p>
+                    <div className='background'>
+                        <img width={512} src={project_management} />
+                    </div>
+                </div>
             </div>
         
         </div>
