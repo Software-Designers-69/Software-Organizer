@@ -90,7 +90,7 @@ export default function CheckboxListSecondary() {
                           : (v = ", ");
                         return member + v;
                       })
-                    : ""
+                    : "..."
                 }
               />
             </ListItemButton>
