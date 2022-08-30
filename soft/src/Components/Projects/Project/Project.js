@@ -10,10 +10,11 @@ import IconButton from "@mui/material/IconButton";
 import Card from "@mui/material/Card";
 import Typography from "@mui/material/Typography";
 import Tooltip from "@mui/material/Tooltip";
+import Button from "@mui/material/Button";
 import PersonAdd from "@mui/icons-material/PersonAdd";
 import Settings from "@mui/icons-material/Settings";
 import Folder from "@mui/icons-material/Folder";
-import AddBoxIcon from "@mui/icons-material/AddBox";
+import AddSharpIcon from "@mui/icons-material/AddSharp";
 import Paper from "@mui/material/Paper";
 import { Link } from "react-router-dom";
 import { db } from "../../../firebase";
@@ -98,7 +99,7 @@ export default function Project() {
               display: "block",
               position: "absolute",
               top: 0,
-              right: 170,
+              right: 30,
               width: 10,
               height: 10,
               bgcolor: "background.paper",
@@ -114,21 +115,21 @@ export default function Project() {
           <Avatar variant="square">
             {project.length != 0 ? project[0].ProjectName[0] : "U"}
           </Avatar>
-          {project.length != 0 ? project[0].ProjectName : ""}
+          {project.length != 0 ? project[0].ProjectName : "Unavailabe"}
         </MenuItem>
         <Divider />
         <MenuItem>
-          <Link to="/myprojects" class="link">
-           <Typography>
-            Show all projects
-            </Typography>
+          <Link to="/myprojects" class="show-all-projects">
+            <Typography >
+              Show all projects
+              </Typography>
           </Link>
         </MenuItem>
         <MenuItem>
-          <ListItemIcon>
-            <AddBoxIcon fontSize="large" />
-          </ListItemIcon>
-          Create new project
+          <Button variant="contained">
+            <AddSharpIcon fontSize="small" />
+            Create new project
+          </Button>
         </MenuItem>
       </Menu>
     </React.Fragment>

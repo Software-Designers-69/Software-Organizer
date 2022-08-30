@@ -1,5 +1,6 @@
 import * as React from "react";
 import { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 import List from "@mui/material/List";
 import ListItem from "@mui/material/ListItem";
 import ListItemButton from "@mui/material/ListItemButton";
@@ -62,6 +63,7 @@ export default function CheckboxListSecondary() {
           <Button
             sx={{ bgcolor: "#FF6666", borderRadius: 4 }}
             variant="contained"
+            href="createprojects"
           >
             New project
           </Button>
