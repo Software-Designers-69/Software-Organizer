@@ -14,7 +14,7 @@ import gmail from "../../images/gmail.png";
 
 function Login() {
     let navigate = useNavigate();
-    let name ,password , email ;
+    let name ,password , email , surname ;
     const [isLogged, setIsLogged] = useState(null);
 
 
@@ -31,6 +31,9 @@ function Login() {
     }
     const Setpassword = event => {
         password = event.target.value;     
+    }
+    const SetSurname = event => {
+        surname = event.target.value; 
     }
 
     const auth = getAuth();
@@ -53,7 +56,7 @@ function Login() {
 
     const addressRef = collection(db, "Users");                        //reference to the user collection
     const addDetails = async () => {                            //handles adding an item to database
-      await addDoc(addressRef, { Email:email , Name:name })  
+      await addDoc(addressRef, { Email:email , Name:name ,Surname:surname})  
     }
 
     function sendemail() {
@@ -80,7 +83,8 @@ function Login() {
             <div className='container'>
                 <div className='resize'>
                     <div className="centre"><br />
-                        <input className='login-input' placeholder="full Name" onChange={Setname}/><br/>      
+                        <input className='login-input' placeholder="Name" onChange={Setname} /><br />  
+                        <input className='login-input' placeholder="Surname" onChange={SetSurname} /><br/>
                         <input className='login-input' placeholder="Email" onChange={Setemail}/><br/>      
                         <input className='login-input'  placeholder="Password" onChange={Setpassword}/> <br/>                        
                         <button class="signup-button" onClick={OnSignup}>Sign-Up</button><br/>                        
