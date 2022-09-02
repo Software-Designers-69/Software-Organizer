@@ -53,7 +53,7 @@ function Login() {
 
     const addressRef = collection(db, "Users");                        //reference to the user collection
     const addDetails = async () => {                            //handles adding an item to database
-      await addDoc(addressRef, { Email:email , Name:name ,Password :password })  
+      await addDoc(addressRef, { Email:email , Name:name })  
     }
 
     function sendemail() {
