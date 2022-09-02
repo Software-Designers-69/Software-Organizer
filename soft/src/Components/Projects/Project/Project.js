@@ -120,13 +120,11 @@ export default function Project() {
         <Divider />
         <MenuItem>
           <Link to="/myprojects" class="show-all-projects">
-            <Typography >
-              Show all projects
-              </Typography>
+            <Typography>Show all projects</Typography>
           </Link>
         </MenuItem>
         <MenuItem>
-          <Button variant="contained">
+          <Button sx={{bgcolor: "#FF6666"}} href="createprojects" variant="contained">
             <AddSharpIcon fontSize="small" />
             Create new project
           </Button>

@@ -8,6 +8,7 @@ import Login from './Screens/Login/Login';
 import MyProjects from './Components/Projects/MyProjects/MyProjects';
 import CreateProject from './Components/Projects/CreateProject/CreateProject/CreateProject';
 import Scrum from './Components/Projects/CreateProject/Scrum/Scrum';
+import ProfileSettings from './Components/Profile/ProfileSettings';
 import SplashScreen from './Screens/SplashScreen/SplashScreen';
 import Page2 from "./Screens/Page2/Page2";
 
@@ -21,6 +22,7 @@ function App() {
         <Route path="myprojects" element={<MyProjects />} />
         <Route path="createprojects" element={<CreateProject />} />
         <Route path="scrum" element={<Scrum />} />
+        <Route path="profilesettings" element={<ProfileSettings />} />
 
       </Routes>
     </BrowserRouter>

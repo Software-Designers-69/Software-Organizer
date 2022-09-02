@@ -30,7 +30,7 @@ function Scrum() {
         <TextField rows={3} multiline required label="Project Description" />
         <Button
           className="btn-create-project"
-          sx={{ width: 300, borderRadius: 5 }}
+          sx={{bgcolor: "#FF6666", width: 300, borderRadius: 5 }}
           variant="contained"
         >
           Create Project
