@@ -83,12 +83,7 @@ function Login() {
                         <input className='login-input' placeholder="full Name" onChange={Setname}/><br/>      
                         <input className='login-input' placeholder="Email" onChange={Setemail}/><br/>      
                         <input className='login-input'  placeholder="Password" onChange={Setpassword}/> <br/>                        
-                        <button class="signup-button" onClick={OnSignup}>Sign-Up</button><br/>
-                        <button class="Loginbutton" >Sign-Up With GitHub</button>
-                        <img src={github} />                         
-                        <br />
-                        <button class="Loginbutton" >Sign-Up With Gmail</button>
-                            <img src={gmail} />                         
+                        <button class="signup-button" onClick={OnSignup}>Sign-Up</button><br/>                        
                         <br/>
                     </div>
                 </div>
