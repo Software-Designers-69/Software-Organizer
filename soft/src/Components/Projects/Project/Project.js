@@ -36,7 +36,7 @@ export default function Project() {
   };
 
   const fun = async () => {
-    const docRef = doc(db, "Projects", "4oYuLCC89oM4nekdkqhI");
+    const docRef = doc(db, "Projects", "sFCPzbCBQpVCHwOkY3MB");
     const docSnap = await getDoc(docRef);
 
     if (docSnap.exists()) {

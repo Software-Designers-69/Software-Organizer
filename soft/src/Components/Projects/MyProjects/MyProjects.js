@@ -12,7 +12,7 @@ import Button from "@mui/material/Button";
 import Avatar from "@mui/material/Avatar";
 import Divider from "@mui/material/Divider";
 import Header from "../../Header/Header";
-import { doc, getDoc } from "firebase/firestore";
+import { doc, getDoc, getDocs, collection } from "firebase/firestore";
 import { db } from "../../../firebase";
 import "./MyProjects.css";
 
@@ -20,7 +20,7 @@ export default function CheckboxListSecondary() {
   const [project, setProject] = useState([]);
   const [checked, setChecked] = React.useState([1]);
   window.addEventListener("load", () => {
-    fun();
+    fun1();
   });
   const handleToggle = (value) => () => {
     const currentIndex = checked.indexOf(value);
@@ -35,16 +35,24 @@ export default function CheckboxListSecondary() {
     setChecked(newChecked);
   };
 
-  const fun = async () => {
-    const docRef = doc(db, "Projects", "4oYuLCC89oM4nekdkqhI");
-    const docSnap = await getDoc(docRef);
-
-    if (docSnap.exists()) {
-      setProject([...project, docSnap.data()]);
-    }
+  const fun1 = async () => {
+    const querySnapshot = await getDocs(collection(db, "Projects"));
+    const dt = [];
+    querySnapshot.forEach((doc) => {
+      dt.push(doc.data());
+    });
+    setProject(dt);
   };
+  // const fun = async () => {
+  //   const docRef = doc(db, "Projects", "4oYuLCC89oM4nekdkqhI");
+  //   const docSnap = await getDoc(docRef);
+
+  //   if (docSnap.exists()) {
+  //     setProject([...project, docSnap.data()]);
+  //   }
+  // };
   useEffect(() => {
-    fun();
+    fun1();
   }, []);
 
   return (
@@ -70,35 +78,35 @@ export default function CheckboxListSecondary() {
         </div>
       </Card>
       <List dense sx={{ width: "100%", bgcolor: "background.paper" }}>
-        <div>
-          {" "}
-          <ListItem key={""} disablePadding>
-            <ListItemButton>
-              <ListItemAvatar>
-                <Avatar>
-                  {project.length != 0 ? project[0].ProjectName[0] : "U"}
-                </Avatar>
-              </ListItemAvatar>
-              <ListItemText
-                primary={
-                  project.length != 0 ? project[0].ProjectName : "Unavailable"
-                }
-                secondary={
-                  project.length != 0
-                    ? project[0].ProjectMembers.map((member, index) => {
-                        let v = "";
-                        index == project[0].ProjectMembers.length - 1
-                          ? (v = ".")
-                          : (v = ", ");
-                        return member + v;
-                      })
-                    : "..."
-                }
-              />
-            </ListItemButton>
-          </ListItem>
-          <Divider sx={{ width: "80%" }} />
-        </div>
+        {project.map((element) => {
+          return (
+            <ListItem key={""} disablePadding>
+              <ListItemButton>
+                <ListItemAvatar>
+                  <Avatar>
+                    {project.length != 0 ? element.ProjectName[0] : "U"}
+                  </Avatar>
+                </ListItemAvatar>
+                <ListItemText
+                  primary={
+                    project.length != 0 ? element.ProjectName : "Unavailable"
+                  }
+                  secondary={
+                    project.length != 0
+                      ? element.ProjectMembers.map((member, index) => {
+                          let v = "";
+                          index == element.ProjectMembers.length - 1
+                            ? (v = ".")
+                            : (v = ", ");
+                          return member + v;
+                        })
+                      : "..."
+                  }
+                />
+              </ListItemButton>
+            </ListItem>
+          );
+        })}
       </List>
     </div>
   );
