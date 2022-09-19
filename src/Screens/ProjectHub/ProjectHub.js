@@ -30,12 +30,13 @@ function ProjectHub() {
     goBack();
   };
 
-  function editWiki(ProjectName) {
+  function editWiki(ProjectWiki) {
     //router function to view detials on single project
     let path = "/Wiki";
     navigate(path, {
       state: {
-        ProjectName: ProjectName,
+        ProjectWiki: ProjectWiki,
+        ID: ID,
       },
     });
   }
