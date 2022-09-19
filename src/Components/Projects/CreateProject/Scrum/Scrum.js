@@ -1,5 +1,5 @@
 import { React, useContext, useState } from "react";
-import { useNavigate } from 'react-router-dom';
+import { useNavigate } from "react-router-dom";
 import Typography from "@mui/material/Typography";
 import TextField from "@mui/material/TextField";
 import Header from "../../../Header/Header";
@@ -17,102 +17,102 @@ import { db } from "../../../../firebase";
 import "./Scrum.css";
 import { EmailContext } from "../../../../context";
 
-
 function Scrum() {
-    let navigate = useNavigate();
-    const { userEmail, setUserEmail } = useContext(EmailContext);
+  let navigate = useNavigate();
+  const { userEmail, setUserEmail } = useContext(EmailContext);
 
-    const [projectName,setProjectName] = useState('');
-    const [projectDesc, setProjectDesc] = useState('');
-    const [projectCreator, setProjectCreator] = useState(userEmail);
-    const [teamName, setTeamName] = useState('');
-    // const updateProject = async () =>
-    //   await setDoc(
-    //     doc(db, "Projects", 'SBzZtsjwDoqmKTP0lSJv'),
-    //     {
-    //       ProjectName: projectName,
-    //       ProjectCreator: projectCreator,
-    //       ProjectDesc: projectDesc,
-    //     },
-    //     { merge: true }
-    //   );
+  const [projectName, setProjectName] = useState("");
+  const [projectDesc, setProjectDesc] = useState("");
+  const [projectCreator, setProjectCreator] = useState(userEmail);
+  const [teamName, setTeamName] = useState("");
+  // const updateProject = async () =>
+  //   await setDoc(
+  //     doc(db, "Projects", 'SBzZtsjwDoqmKTP0lSJv'),
+  //     {
+  //       ProjectName: projectName,
+  //       ProjectCreator: projectCreator,
+  //       ProjectDesc: projectDesc,
+  //     },
+  //     { merge: true }
+  //   );
 
-    const routeChange = () => {
-        let path = "/landing";
-        navigate(path);
-    };
+  const routeChange = () => {
+    let path = "/landing";
+    navigate(path);
+  };
 
-    const createNewProject = async () => {
-        await setDoc(
-            doc(collection(db, "Projects")),
-            {
-                ProjectName: projectName,
-                ProjectOwner: projectCreator,
-                ProjectDesc: projectDesc,
-                ProjectTeam: teamName,
-                ProjectMembers: [userEmail],
-            },
-            { merge: true }
-        );
-        await setDoc(
-            doc(collection(db, "Teams")),
-            {
-                TeamOwner: projectCreator,
-                TeamName: teamName,
-                TeamMembers: [userEmail],
-            },
-            { merge: true }
-        );
-        routeChange();
-    }
-
-    return (
-        <div>
-            <Header />
-            <div className="tittle">
-                <Typography variant="h5">Create Project</Typography>
-                <Typography variant="body1">
-                    Choose template for your project
-                </Typography>
-            </div>
-
-            <div className="project-details">
-                <Typography>New Project details</Typography>
-                <TextField
-                    onChange={(event) => {
-                        setProjectName(event.target.value);
-                    }}
-                    required
-                    label="Project Name"
-                />
-                <TextField
-                    onChange={(event) => {
-                        setTeamName(event.target.value);
-                    }}
-                    multiline
-                    required
-                    label="Team Name"
-                />
-                <TextField
-                    onChange={(event) => {
-                        setProjectDesc(event.target.value);
-                    }}
-                    rows={3}
-                    multiline
-                    required
-                    label="Project Description"
-                />
-                <Button
-                    className="btn-create-project"
-                    sx={{ bgcolor: "#FF6666", width: 300, borderRadius: 5 }}
-                    variant="contained"
-                    onClick={createNewProject}
-                >
-                    Create Project
-                </Button>
-            </div>
-        </div>
+  const createNewProject = async () => {
+    await setDoc(
+      doc(collection(db, "Projects")),
+      {
+        ProjectName: projectName,
+        ProjectOwner: projectCreator,
+        ProjectDesc: projectDesc,
+        ProjectWiki: "",
+        ProjectTeam: teamName,
+        ProjectMembers: [userEmail],
+      },
+      { merge: true }
     );
+    await setDoc(
+      doc(collection(db, "Teams")),
+      {
+        TeamOwner: projectCreator,
+        TeamName: teamName,
+        TeamMembers: [userEmail],
+      },
+      { merge: true }
+    );
+    routeChange();
+  };
+
+  return (
+    <div>
+      <Header />
+      <div className="tittle">
+        <Typography variant="h5">Create Project</Typography>
+        <Typography variant="body1">
+          Choose template for your project
+        </Typography>
+      </div>
+
+      <div className="project-details">
+        <Typography>New Project details</Typography>
+        <TextField
+          onChange={(event) => {
+            setProjectName(event.target.value);
+          }}
+          required
+          label="Project Name"
+        />
+        <TextField
+          onChange={(event) => {
+            setTeamName(event.target.value);
+          }}
+          multiline
+          required
+          label="Team Name"
+        />
+        <TextField
+          onChange={(event) => {
+            setProjectDesc(event.target.value);
+          }}
+          rows={3}
+          multiline
+          required
+          label="Project Description"
+        />
+        <Button
+          className="btn-create-project"
+          sx={{ bgcolor: "#FF6666", width: 300, borderRadius: 5 }}
+          variant="contained"
+          onClick={createNewProject}
+        >
+          Create Project
+        </Button>
+      </div>
+    </div>
+  );
 }
 
 export default Scrum;

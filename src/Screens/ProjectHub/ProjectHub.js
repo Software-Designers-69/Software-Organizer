@@ -10,7 +10,14 @@ import Footer from "../../Components/Footer/Footer";
 
 function ProjectHub() {
   const { state } = useLocation();
-  const { ID, ProjectName, ProjectOwner, ProjectMembers, ProjectDesc } = state;
+  const {
+    ID,
+    ProjectName,
+    ProjectOwner,
+    ProjectMembers,
+    ProjectDesc,
+    ProjectWiki,
+  } = state;
   let navigate = useNavigate();
   const { userEmail, setUserEmail } = useContext(EmailContext);
 
@@ -22,6 +29,16 @@ function ProjectHub() {
     await deleteDoc(doc(db, "Projects", ID));
     goBack();
   };
+
+  function editWiki(ProjectName) {
+    //router function to view detials on single project
+    let path = "/Wiki";
+    navigate(path, {
+      state: {
+        ProjectName: ProjectName,
+      },
+    });
+  }
 
   const tryDelete = () => {
     let isExecuted = window.confirm(
@@ -40,9 +57,9 @@ function ProjectHub() {
       <div class="body">
         <h1>{ProjectName}</h1>
         <h6>{ProjectDesc}</h6>
-        <Link to="/Wiki" class="link">
+        <button className="delete-btn" onClick={() => editWiki(ProjectWiki)}>
           Project Wiki
-        </Link>
+        </button>
         <button className="delete-btn" onClick={tryDelete}>
           DELETE
         </button>
