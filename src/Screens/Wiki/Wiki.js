@@ -5,6 +5,7 @@ import { Link, useNavigate, useLocation } from "react-router-dom";
 
 import "./Wiki.css";
 import Header from "../../Components/Header/Header";
+import { AiOutlineConsoleSql } from "react-icons/ai";
 
 function Wiki() {
   const { state } = useLocation();
@@ -21,7 +22,7 @@ function Wiki() {
   const editWiki = async (wiki) => {
     //handles adding a wiki to database
     await setDoc(
-      doc(db, "Project", ID),
+      doc(db, "Projects", ID),
       {
         ProjectWiki: wiki,
       },
@@ -39,7 +40,7 @@ function Wiki() {
         <h1>{ProjectWiki}</h1>
         <input
           className="Wiki-input"
-          placeholder={ProjectWiki}
+          defaultValue={ProjectWiki}
           onChange={Setwiki}
         />
 
@@ -47,6 +48,7 @@ function Wiki() {
           Save
         </button>
         <br />
+        <Footer />
       </div>
     </div>
   );
