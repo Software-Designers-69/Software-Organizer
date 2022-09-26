@@ -1,34 +1,73 @@
+:root {
+    --redish: #8E0808;
+    --grey: #333333;
+    --white: #F5EBD8;
+}
+
+body.light {
+    --background-color: var(--white);
+    --text-color: var(--redish);
+    --font-weight: 400;
+}
+
+body.dark {
+    --background-color: var(--grey);
+    --text-color: var(--white);
+    --font-weight: 400;
+}
+
 header {
-    background-color: #F5EBD8;
+    background: var(--background-color);
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     padding: 0 10px;
     text-align: center;
+    transition: background 0.3s ease-in-out, color 0.6s ease-in-out;
+}
+
+.App-header {
+    background: var(--background-color);
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 0 10px;
+    text-align: center;
+    color: var(--text-color);
+    transition: background 0.3s ease-in-out, color 0.6s ease-in-out;
 }
 
 .links-header {
     display: flex;
     flex-direction: row;
+    color:var(--text-color);
+    transition: color 0.3s ease-in-out;
 }
+
 .right-header {
     align-items: center;
     display: flex;
     justify-content: center;
+    color:var(--text-color);
+    transition: color 0.3s ease-in-out;
 }
+
 .left-header {
     align-items: center;
     display: flex;
     justify-content: center;
+    color:var(--text-color);
+    
 }
 
 /*--------------------------------------------------*/
 
 .link {
     font-size: 20px;
-    color: #8E0808;
+    color:var(--text-color);
     margin: 20px;
     text-decoration: none;
+    transition: background 0.3s ease-in-out, color 0.6s ease-in-out;
 }
 
 .link:hover {
@@ -38,8 +77,9 @@ header {
 }
 
 .title-header {
-    color: #8E0808;
+    color: var(--text-color);
     font-size: 60px;
+    transition: color 0.6s ease-in-out;
 }
 
 @import url('https://fonts.googleapis.com/css2?family=Anton&family=Silkscreen&display=swap');
@@ -47,6 +87,7 @@ header {
 .software {
     font-family: 'Anton';
     font-style: bold;
-    color: #8E0808;
+    color: var(--text-color);
     font-size: 25px;
+    transition: color 0.6s ease-in-out;
 }

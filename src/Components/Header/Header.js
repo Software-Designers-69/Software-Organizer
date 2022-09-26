@@ -2,13 +2,15 @@ import { Link, useNavigate } from "react-router-dom";
 import { FiFolder, FiHelpCircle, FiHome } from "react-icons/fi";
 import { IoNotificationsOutline } from "react-icons/io5";
 import { CgProfile } from "react-icons/cg";
-import {AiOutlineContacts} from "react-icons/ai"
+import { AiOutlineContacts } from "react-icons/ai";
 
 import "./Header.css";
 
 import Profile from "../Profile/Profile";
 import Project from "../Projects/Project/Project";
 import Lion from "../../images/LION.png";
+
+import DarkMode from "../../Components/DarkMode/DarkMode";
 
 function Header() {
   let navigate = useNavigate();
@@ -20,20 +22,20 @@ function Header() {
     <div className="Header">
       <header className="App-header">
         <div className="left-header">
-          <img src={Lion} width="40" onClick={routeChange}/>
+          <img src={Lion} width="40" onClick={routeChange} />
           <p class="software">&nbsp;Lion</p>
           <Project />
         </div>
         <div className="right-header">
           <div className="links-header">
-
+            {/* <DarkMode /> */}
             <Link to="/landing" class="link">
-              <FiHome/>
+              <FiHome />
               &nbsp;Home
             </Link>
 
             <Link to="/contactb" class="link">
-              <AiOutlineContacts/>
+              <AiOutlineContacts />
               &nbsp;Contact
             </Link>
 
