@@ -8,7 +8,7 @@ import productivity from "../../images/productivity.png";
 import project_management from "../../images/project_management.png";
 import user_story from "../../images/user_story.png";
 import hero from "../../images/hero.png";
-import working from "../../images/working.json";
+import working from "../../images/working-dark.json";
 import gears from "../../images/gears.json";
 import taskman from "../../images/taskman.json";
 
@@ -19,7 +19,8 @@ import Lion from "../../images/Lion.json";
 function SplashScreen() {
   let navigate = useNavigate();
 
-  const routeChange = () => {       //router function to change navigate site
+  const routeChange = () => {
+    //router function to change navigate site
     let path = "/signup";
     navigate(path);
   };
@@ -56,7 +57,7 @@ function SplashScreen() {
             <Lottie
               animationData={working}
               loop={true}
-              style={{ height: 400 }}
+              style={{ height: 430 }}
             />
           </div>
         </div>

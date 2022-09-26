@@ -1,6 +1,6 @@
 :root {
     --redish: #8E0808;
-    --grey: #333333;
+    --black: #000000;
     --white: #F5EBD8;
 }
 
@@ -11,12 +11,13 @@ body.light {
 }
 
 body.dark {
-    --background-color: var(--grey);
+    --background-color: var(--black);
     --text-color: var(--white);
     --font-weight: 400;
 }
 
 header {
+    border: 1px solid #737373;
     background: var(--background-color);
     display: flex;
     flex-direction: row;
