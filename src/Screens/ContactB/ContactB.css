@@ -1,10 +1,33 @@
+:root {
+    --redish: #8E0808;
+    --black: #1a1a1a;
+    --white: #F5EBD8;
+}
+
+body.light {
+    --background-color: var(--white);
+    --text-color: var(--redish);
+    --font-weight: 400;
+}
+
+body.dark {
+    --background-color: var(--black);
+    --text-color: var(--white);
+    --font-weight: 400;
+}
+
 .contact-card {
-    background-color: #FAEBD7;
+    background-color: var(--background-color);
     margin-left: 25%;
     margin-right: 25%;
-    padding: 15px;
-    border-radius: 15px;
-    width: 80%;
+    padding: 2px;
+    border: 1px solid #B38B59;
+    transition: background-color 0.3 ease-in-out;
+}
+
+form { 
+    background: var(--background-color);
+    transition: background 0.3s ease-in-out;
 }
 
 .block2 {
@@ -20,7 +43,6 @@
     padding-left: 10px;
     padding-left: 10px;
     padding-right: 10px;
-    height : 40px;
 }
 
 .contact-textarea{
@@ -44,6 +66,8 @@
 
 .heading{
     text-align: center;
+    color: var(--text-color);
+    transition: color 0.6s ease-in-out;
 }
 
 
