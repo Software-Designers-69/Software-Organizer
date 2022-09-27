@@ -28,7 +28,7 @@ function Header() {
         </div>
         <div className="right-header">
           <div className="links-header">
-            {/* <DarkMode /> */}
+            <DarkMode />
             <Link to="/landing" class="link">
               <FiHome />
               &nbsp;Home
