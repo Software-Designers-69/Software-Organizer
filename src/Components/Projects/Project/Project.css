@@ -1,3 +1,21 @@
+:root {
+    --redish: #8E0808;
+    --black: #1a1a1a;
+    --white: #F5EBD8;
+}
+
+body.light {
+    --background-color: var(--white);
+    --text-color: var(--redish);
+    --font-weight: 400;
+}
+
+body.dark {
+    --background-color: var(--black);
+    --text-color: var(--white);
+    --font-weight: 400;
+}
+
 .project {
     padding: 20px;
 }
@@ -5,4 +23,9 @@
 .show-all-projects {
     justify-content: center;
     text-decoration: none;
+}
+
+Typography {
+    color: var(--text-color);
+    transition: color 0.3s ease-in-out;
 }

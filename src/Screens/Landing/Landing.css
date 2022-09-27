@@ -1,3 +1,22 @@
+:root {
+    --redish: #8E0808;
+    --black: #1a1a1a;
+    --white: #F5EBD8;
+}
+
+body.light {
+    --background-color: var(--white);
+    --text-color: var(--redish);
+    --font-weight: 400;
+}
+
+body.dark {
+    --background-color: var(--black);
+    --text-color: var(--white);
+    --font-weight: 400;
+}
+
+
 .div-cont {
     display:flex;
     flex-direction: row;
@@ -38,4 +57,14 @@
 .team-div:hover {
     transform: scale(1.1);
     color:#8E0808;
+}
+
+h1 { 
+    color: var(--text-color);
+    transition: color 0.3s ease-in-out;
+}
+
+h4 { 
+    color: var(--text-color);
+    transition: color 0.3s ease-in-out;
 }

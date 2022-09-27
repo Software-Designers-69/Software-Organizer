@@ -124,7 +124,11 @@ export default function Project() {
           </Link>
         </MenuItem>
         <MenuItem>
-          <Button sx={{ bgcolor: "#FF6666" }} href="createprojects" variant="contained">
+          <Button
+            sx={{ bgcolor: "#FF6666" }}
+            href="createprojects"
+            variant="contained"
+          >
             <AddSharpIcon fontSize="small" />
             Create new project
           </Button>

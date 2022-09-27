@@ -1,3 +1,20 @@
+:root {
+    --redish: #8E0808;
+    --black: #1a1a1a;
+    --white: #F5EBD8;
+}
+
+body.light {
+    --background-color: var(--white);
+    --text-color: var(--redish);
+    --font-weight: 400;
+}
+
+body.dark {
+    --background-color: var(--black);
+    --text-color: var(--white);
+    --font-weight: 400;
+}
 
 .editinput{
     width: 100%;
@@ -19,4 +36,9 @@
     font-family: 'Trebuchet MS';
     font-size: 18px;
     cursor: pointer;
+}
+
+h1 { 
+    color: var(--text-color);
+    transition: color 0.6s ease-in-out;
 }

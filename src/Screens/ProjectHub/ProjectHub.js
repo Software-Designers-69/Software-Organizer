@@ -35,7 +35,7 @@ function ProjectHub() {
         ProjectWiki: ProjectWiki,
         ID: ID,
         ProjectName: ProjectName,
-        UserStories: UserStories
+        UserStories: UserStories,
       },
     });
   }
@@ -61,7 +61,7 @@ function ProjectHub() {
         ID: ID,
         UserStories: UserStories,
         ProjectWiki: ProjectWiki,
-        ProjectName: ProjectName
+        ProjectName: ProjectName,
       },
     });
   };
@@ -81,7 +81,7 @@ function ProjectHub() {
           <h6 onClick={goAdd}>Add new user story</h6>
           <h6 onClick={tryDelete}>Delete project</h6>
         </div>
-        <h3>User Stories</h3>
+        <h1>User Stories</h1>
         <div className="storycont">
           {UserStories.map((story) => {
             return (
