@@ -3,23 +3,23 @@ import { useNavigate, useLocation } from "react-router-dom";
 import { EmailContext } from "../../context";
 import { db } from '../../firebase';
 import { Timestamp, updateDoc, doc, deleteDoc } from "firebase/firestore";
+import { fiFile ,FiHome} from "react-icons/fi";
 
-
-import './Add.css';
+import './AddDocument.css';
 import Header from "../../Components/Header/Header";
 import Footer from "../../Components/Footer/Footer";
 import Lion from "../../images/Lion-white.png";
 
 
 
-function Add() {
+function AddDocument() {
   const { state } = useLocation();
   const { ID, UserStories, ProjectName, ProjectWiki } = state;    //state from previous page
   let navigate = useNavigate();
   const { userEmail, setUserEmail } = useContext(EmailContext);   //email of user logged in
   const [userStory, setUserStory] = useState('');
   const [status, setStatus] = useState('New');      //default status for new user story is new
-
+  const [filename, setFilename] = useState('    File name.pdf'); 
   const addUserStory = async () => {      //adds new user story to the project in database
     let timestamp = Timestamp.fromDate(new Date());
     const prref = doc(db, 'Projects', ID);
@@ -86,20 +86,18 @@ function Add() {
         </div>
             <h3>Add A Document</h3>
             <div className="indiv">
-            <textarea className = 'edtinput' type="text" placeholder="Description" onChange={(event)=> {setUserStory(event.target.value)}}/>
-              <select className='edtselect' placeholder="New" onChange={(event) => { setStatus(event.target.value) }}>
-                <option value="New">New</option>
-                <option value="In Progress">In Progress</option>
-                <option value="Done">Done</option>
-            </select>
-            <button className="addbtn" onClick={addUserStory}>Add User Story</button>
-            </div>
+            <textarea className = 'input-description' type="text" placeholder="Description of the document" onChange={(event)=> {setUserStory(event.target.value)}}/>
+            <div>
+                <button className="select-pdf-btn" > Select PDF file </button>
+                <text className='file-name'>{filename}</text>
+                <button className="add-doc-btn" >Add Document</button>
+            </div>           
+              </div>
         </div>
-        <div class="footer">
-            <Footer />
+        <div class="footer"><Footer />
         </div>
     </div>
   )
 }
 
-export default Add
+export default AddDocument

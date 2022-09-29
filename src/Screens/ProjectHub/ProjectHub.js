@@ -66,6 +66,18 @@ function ProjectHub() {
     });
   };
 
+    const toAddDoc = () => {   //navigates to adding stories
+    let path = "/adddocument";
+    navigate(path, {
+      state: {
+        ID: ID,
+        UserStories: UserStories,
+        ProjectWiki: ProjectWiki,
+        ProjectName: ProjectName
+      },
+    });
+  };
+
   return (
     <div>
       <div class="header">
@@ -80,6 +92,7 @@ function ProjectHub() {
           <h6 onClick={() => editWiki(ProjectWiki)}>Add Wiki </h6>
           <h6 onClick={goAdd}>Add new user story</h6>
           <h6 onClick={tryDelete}>Delete project</h6>
+          <h6 onClick={toAddDoc}>Add Documents</h6>
         </div>
         <h3>User Stories</h3>
         <div className="storycont">
