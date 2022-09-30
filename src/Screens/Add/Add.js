@@ -14,7 +14,7 @@ import Lion from "../../images/Lion-white.png";
 
 function Add() {
   const { state } = useLocation();
-  const { ID, UserStories, ProjectName, ProjectWiki } = state;    //state from previous page
+  const { ID, UserStories, ProjectName, ProjectWiki ,Documents } = state;    //state from previous page
   let navigate = useNavigate();
   const { userEmail, setUserEmail } = useContext(EmailContext);   //email of user logged in
   const [userStory, setUserStory] = useState('');
@@ -53,6 +53,16 @@ function Add() {
     });
   }
 
+    const toAddDoc = () => {   //navigates to adding stories
+    let path = "/adddocument";
+    navigate(path, {
+      state: {
+        ID: ID,
+        Documents:Documents,
+      },
+    });
+  };
+
   const deleteProject = async () => {
     await deleteDoc(doc(db, "Projects", ID));
     goBack();
@@ -83,6 +93,7 @@ function Add() {
           <h6 onClick={() => editWiki(ProjectWiki)}>Add Wiki </h6>
           <h6>Add new user story</h6>
           <h6 onClick={tryDelete}>Delete project</h6>
+          <h6 onClick={toAddDoc}>Add Documents</h6>
         </div>
             <h3>Add A Document</h3>
             <div className="indiv">

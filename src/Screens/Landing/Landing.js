@@ -36,6 +36,7 @@ function Landing() {
         ProjectMembers: project.ProjectMembers,
         ProjectDesc: project.ProjectDesc,
         ProjectWiki: project.ProjectWiki,
+        Documents :project.Documents,
         UserStories: project.UserStories.reverse(),
       },
     });

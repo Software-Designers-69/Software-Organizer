@@ -3,7 +3,6 @@ import { useState, useEffect, useContext } from 'react';
 import HeaderB from '../../Components/HeaderB/HeaderB';
 import Footer from '../../Components/Footer/Footer';
 import '../Login/Login.css';
-import './SignUp.css';
 import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword } from "firebase/auth";
 import { db } from '../../firebase';
 import { collection, getDocs, addDoc } from "firebase/firestore";

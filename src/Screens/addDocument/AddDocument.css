@@ -19,6 +19,24 @@
 
 }
 
+input {
+    font-size: 18px;
+    border: 2px; 
+    border-style: solid;
+    border-color: #B38B59;
+    font-family: 'Trebuchet MS';
+}
+
+.text-percent{
+    width: 20px;
+    height: 20px;
+    font-size: 20px;
+    background-color: goldenrod;
+    border-radius: 20px;
+    font-family: 'Times New Roman', Times, serif;
+    margin-left: 20px;
+}
+
 .file-name{
     font-family: "Inter";
     color: black;
@@ -39,7 +57,7 @@
 }
 .select-pdf-btn:hover {
 
-    transform: scale(1.01);
+    transform: scale(1.1);
 
 }
 .input-description {

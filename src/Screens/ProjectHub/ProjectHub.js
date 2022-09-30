@@ -19,6 +19,7 @@ function ProjectHub() {
     ProjectDesc,
     UserStories,
     ProjectWiki,
+    Documents,
   } = state;      //state from previous page
   let navigate = useNavigate();
   const { userEmail, setUserEmail } = useContext(EmailContext);
@@ -35,7 +36,8 @@ function ProjectHub() {
         ProjectWiki: ProjectWiki,
         ID: ID,
         ProjectName: ProjectName,
-        UserStories: UserStories
+        UserStories: UserStories,
+        Documents:Documents
       },
     });
   }
@@ -61,19 +63,21 @@ function ProjectHub() {
         ID: ID,
         UserStories: UserStories,
         ProjectWiki: ProjectWiki,
-        ProjectName: ProjectName
+        ProjectName: ProjectName,
+        Documents:Documents
       },
     });
   };
 
-    const toAddDoc = () => {   //navigates to adding stories
+    const toAddDoc = () => {   //navigates to adding a file for a project
     let path = "/adddocument";
     navigate(path, {
-      state: {
-        ID: ID,
-        UserStories: UserStories,
+        state: {
         ProjectWiki: ProjectWiki,
-        ProjectName: ProjectName
+        ID: ID,
+        ProjectName: ProjectName,
+        UserStories: UserStories,
+        Documents:Documents
       },
     });
   };
@@ -103,6 +107,21 @@ function ProjectHub() {
                 <div className="story-bottom">
                   <p className="story-details">Posted by: {story.UserPoster}</p>
                   <p className="story-details">Status: {story.UserStatus}</p>
+                </div>
+              </div>
+            );
+          })}
+        </div>
+        <h3>Documents</h3>
+        <div className="storycont">
+          {Documents.map((file) => {
+            return (
+              <div key={file.id} className="story-div">
+                <h4>{file.filename}</h4>
+                <h4>{file.fileDescription}</h4>
+                <button className="viewbtn" onClick={() => editWiki(ProjectWiki)}>View Document</button>
+                <div className="story-bottom">
+                  <p className="story-details">Posted by: {file.UserPoster}</p>
                 </div>
               </div>
             );
