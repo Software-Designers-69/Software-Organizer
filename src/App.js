@@ -16,6 +16,7 @@ import ContactB from "./Screens/ContactB/ContactB";
 import Add from "./Screens/Add/Add";
 import Wiki from "./Screens/Wiki/Wiki";
 import ForgotPass from "./Screens/ForgotPass/ForgotPass";
+import AddMember from "./Screens/AddMember/AddMember";
 
 function App() {
   const [userEmail, setUserEmail] = useState("");
@@ -38,6 +39,7 @@ function App() {
           <Route path="/add" element={<Add />} />
           <Route path="/Wiki" element={<Wiki />} />
           <Route path="/forgotpass" element={<ForgotPass />} />
+          <Route path="/addmember" element={<AddMember />} />
         </Routes>
       </BrowserRouter>
     </EmailContext.Provider>

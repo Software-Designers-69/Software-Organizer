@@ -16,10 +16,11 @@ function ProjectHub() {
     ProjectName,
     ProjectOwner,
     ProjectMembers,
+    ProjectTeam,
     ProjectDesc,
     UserStories,
     ProjectWiki,
-  } = state;      //state from previous page
+  } = state; //state from previous page
   let navigate = useNavigate();
   const { userEmail, setUserEmail } = useContext(EmailContext);
 
@@ -35,18 +36,36 @@ function ProjectHub() {
         ProjectWiki: ProjectWiki,
         ID: ID,
         ProjectName: ProjectName,
-        UserStories: UserStories
+        UserStories: UserStories,
       },
     });
   }
 
-  const deleteProject = async () => {     //handles delete on single project
+  function addMember(ProjectMembers, ProjectTeam) {
+    //router function to view detials on single project
+    let path = "/addmember";
+    navigate(path, {
+      state: {
+        ID: ID,
+        ProjectMembers: ProjectMembers,
+        ProjectTeam: ProjectTeam,
+        ProjectName: ProjectName,
+        UserStories: UserStories,
+        ProjectWiki: ProjectWiki,
+      },
+    });
+  }
+
+  const deleteProject = async () => {
+    //handles delete on single project
     await deleteDoc(doc(db, "Projects", ID));
     goBack();
   };
 
-  const tryDelete = () => {     //confrms intention to delete a single project
-    let isExecuted = window.confirm(    //pop up to confirm deletion
+  const tryDelete = () => {
+    //confrms intention to delete a single project
+    let isExecuted = window.confirm(
+      //pop up to confirm deletion
       "Are you sure you want to delete this project?"
     );
     if (isExecuted) {
@@ -54,14 +73,15 @@ function ProjectHub() {
     }
   };
 
-  const goAdd = () => {   //navigates to adding stories
+  const goAdd = () => {
+    //navigates to adding stories
     let path = "/add";
     navigate(path, {
       state: {
         ID: ID,
         UserStories: UserStories,
         ProjectWiki: ProjectWiki,
-        ProjectName: ProjectName
+        ProjectName: ProjectName,
       },
     });
   };
@@ -79,6 +99,9 @@ function ProjectHub() {
           <h3>{ProjectName}</h3>
           <h6 onClick={() => editWiki(ProjectWiki)}>Add Wiki </h6>
           <h6 onClick={goAdd}>Add new user story</h6>
+          <h6 onClick={() => addMember(ProjectMembers, ProjectTeam)}>
+            Add Member{" "}
+          </h6>
           <h6 onClick={tryDelete}>Delete project</h6>
         </div>
         <h3>User Stories</h3>
