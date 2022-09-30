@@ -34,6 +34,7 @@ function Landing() {
         ProjectName: project.ProjectName,
         ProjectOwner: project.ProjectOwner,
         ProjectMembers: project.ProjectMembers,
+        //Teams: team.TeamMembers,
         ProjectDesc: project.ProjectDesc,
         ProjectWiki: project.ProjectWiki,
         UserStories: project.UserStories.reverse(),

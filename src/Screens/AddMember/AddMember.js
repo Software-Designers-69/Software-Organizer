@@ -22,7 +22,7 @@ function AddMember() {
   const {
     ID,
     ProjectMembers,
-    ProjectTeam,
+    TeamMembers,
     ProjectName,
     UserStories,
     ProjectWiki,
@@ -35,7 +35,6 @@ function AddMember() {
 
   const [projects, setProjects] = useState([]); //array to store user's projects'
   const projectRef = collection(db, "Projects"); //collection reference to all projects
-  const membersRef = collection(db, "ProjectMembers"); //collection reference to all projects
 
   const editWiki = async (wiki) => {
     //handles adding a wiki to database
@@ -56,6 +55,14 @@ function AddMember() {
       ProjectMembers: [...ProjectMembers, name],
     });
     alert("Member Added");
+  };
+
+  const addMemberTeam = async (name) => {
+    //handles adding a new member to the project/team
+    const prref = doc(db, "Teams", ID);
+    await updateDoc(prref, {
+      TeamMembers: [...TeamMembers, name],
+    });
   };
 
   const goBack = () => {
@@ -110,7 +117,13 @@ function AddMember() {
             placeholder="New Member..."
           />
 
-          <button className="edtbtn" onClick={() => addMember(name)}>
+          <button
+            className="edtbtn"
+            onClick={() => {
+              addMember(name);
+              addMemberTeam(name);
+            }}
+          >
             Add
           </button>
         </div>

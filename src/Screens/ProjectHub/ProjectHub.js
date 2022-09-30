@@ -16,7 +16,7 @@ function ProjectHub() {
     ProjectName,
     ProjectOwner,
     ProjectMembers,
-    ProjectTeam,
+    TeamMembers,
     ProjectDesc,
     UserStories,
     ProjectWiki,
@@ -41,14 +41,14 @@ function ProjectHub() {
     });
   }
 
-  function addMember(ProjectMembers, ProjectTeam) {
+  function addMember(ProjectMembers, TeamMembers) {
     //router function to view detials on single project
     let path = "/addmember";
     navigate(path, {
       state: {
         ID: ID,
         ProjectMembers: ProjectMembers,
-        ProjectTeam: ProjectTeam,
+        TeamMembers: TeamMembers,
         ProjectName: ProjectName,
         UserStories: UserStories,
         ProjectWiki: ProjectWiki,
@@ -99,7 +99,7 @@ function ProjectHub() {
           <h3>{ProjectName}</h3>
           <h6 onClick={() => editWiki(ProjectWiki)}>Add Wiki </h6>
           <h6 onClick={goAdd}>Add new user story</h6>
-          <h6 onClick={() => addMember(ProjectMembers, ProjectTeam)}>
+          <h6 onClick={() => addMember(ProjectMembers, TeamMembers)}>
             Add Member{" "}
           </h6>
           <h6 onClick={tryDelete}>Delete project</h6>
