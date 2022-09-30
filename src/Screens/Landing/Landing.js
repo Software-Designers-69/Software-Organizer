@@ -77,7 +77,7 @@ function Landing() {
           </div>
           {projects
             .filter((project) => {
-              if (project.ProjectOwner === userEmail) {
+              if (project.ProjectMembers === userEmail) {
                 return project;
               }
             })
