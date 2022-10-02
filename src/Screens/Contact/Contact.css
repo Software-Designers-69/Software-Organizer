@@ -39,6 +39,9 @@
     background-color: #B38B59;
     color: white;
 }
+.subbut:hover{
+    transform: scale(1.1);
+}
 
 .heading{
     text-align: center;
