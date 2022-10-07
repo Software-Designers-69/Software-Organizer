@@ -1,0 +1,15 @@
+.viewbtn {
+    background-color: coral;
+    border: 0px;
+    height: 20px;
+    width: 110px;
+    cursor: pointer;
+    border-radius: 30px;
+    font-family: 'Trebuchet MS';
+
+}
+
+.viewbtn:hover {
+
+    transform: scale(1.01);
+}

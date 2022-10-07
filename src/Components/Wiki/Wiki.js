@@ -1,5 +1,4 @@
 import React from 'react';
-
 import AdderDocument from '../AdderDocument/AdderDocument';
 import AdderWiki from '../AdderWiki/AdderWiki';
 

@@ -17,6 +17,7 @@ import Add from "./Screens/Add/Add";
 import Wiki from "./Screens/Wiki/Wiki";
 import ForgotPass from "./Screens/ForgotPass/ForgotPass";
 import AddDocument from "./Screens/AddDocument/AddDocument";
+import ShowDocument from "./Screens/ShowDocument/ShowDocument"
 
 function App() {
   const [userEmail, setUserEmail] = useState("");
@@ -40,7 +41,7 @@ function App() {
           <Route path="/Wiki" element={<Wiki />} />
           <Route path="/forgotpass" element={<ForgotPass />} />
           <Route path="/adddocument" element={<AddDocument />} />
-
+          <Route path="/showdocument" element={<ShowDocument />} />
         </Routes>
       </BrowserRouter>
     </EmailContext.Provider>

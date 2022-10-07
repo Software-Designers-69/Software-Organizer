@@ -44,10 +44,6 @@ function AddDocument() {
         let path = '/landing';
         navigate(path);
     };
-
-    
-
-
     const getFile = (event) => {
         setfile(event.target.files[0]);               //the file which is to be added to the database
     }

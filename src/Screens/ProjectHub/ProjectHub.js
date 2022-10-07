@@ -10,7 +10,7 @@ import Header from "../../Components/Header/Header";
 import Footer from "../../Components/Footer/Footer";
 import UserStories from "../../Components/UserStories/UserStories";
 import Wiki from "../../Components/Wiki/Wiki";
-
+import ViewDocuments from "../../Components/ViewDocuments/ViewDocuments";
 function ProjectHub() {
   const { state } = useLocation();
   const {
@@ -98,6 +98,7 @@ function ProjectHub() {
 
   return (
     <div>
+
       <div class="header">
         <Header />
       </div>
@@ -140,6 +141,13 @@ function ProjectHub() {
             <br/>
             Settings
           </button>
+          <button className={toggleState === 6 ? "tabs active-tabs" : "tabs"} onClick={() => toggleTab(6)}>
+            <span class="material-symbols-outlined">
+              Folder
+            </span>
+            <br/>
+            files
+          </button>
         </div>
 
         <div className="content-tabs">
@@ -161,6 +169,10 @@ function ProjectHub() {
 
           <div className={toggleState === 5 ? "content  active-content" : "content"}>
             <p>Settings</p>
+          </div>
+
+          <div className={toggleState === 6 ? "content  active-content" : "content"}>
+            {loading ? null : <ViewDocuments project={project} />}
           </div>
         </div>
 

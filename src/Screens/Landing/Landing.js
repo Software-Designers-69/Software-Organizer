@@ -68,6 +68,7 @@ function Landing() {
 
   return (
     <div>
+
       <div class="header">
         <Header />
       </div>
@@ -88,6 +89,7 @@ function Landing() {
                 onClick={() => editHub(project)}
               >
                 <h6>{project.ProjectName}</h6>
+               {console.log(project)}
               </div>
             );
           })}
