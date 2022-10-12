@@ -1,4 +1,4 @@
-import React, { Link } from "react";
+import React,{ useState, useEffect, useContext}  from "react";
 import { useNavigate } from "react-router-dom";
 import Box from "@mui/material/Box";
 import Avatar from "@mui/material/Avatar";
@@ -8,11 +8,22 @@ import ListItemIcon from "@mui/material/ListItemIcon";
 import Divider from "@mui/material/Divider";
 import IconButton from "@mui/material/IconButton";
 import Tooltip from "@mui/material/Tooltip";
+import List from "@mui/material/List";
+import ListItem from "@mui/material/ListItem";
+import ListItemButton from "@mui/material/ListItemButton";
+import ListItemText from "@mui/material/ListItemText";
+import ListItemAvatar from "@mui/material/ListItemAvatar";
 import Logout from "@mui/icons-material/Logout";
 import { getAuth, signOut } from "firebase/auth";
+import { EmailContext } from "../../context";
+import { getDocs, collection, query, where } from "firebase/firestore";
+import { db } from "../../firebase";
 
 export default function Profile() {
   const [anchorEl, setAnchorEl] = React.useState(null);
+  const [name, setName] = useState("");
+  const { userEmail, setUserEmail } = useContext(EmailContext);
+
   const open = Boolean(anchorEl);
   const handleClick = (event) => {
     setAnchorEl(event.currentTarget);
@@ -32,6 +43,20 @@ export default function Profile() {
         // An error happened.
       });
   };
+
+  const fun = async () => {
+    const q = query(collection(db, "Users"), where("Email", "==", userEmail));
+    const querySnapshot = await getDocs(q);
+    querySnapshot.forEach((doc) => {
+      // doc.data() is never undefined for query doc snapshots
+      // console.log(doc.id, " => ", doc.data());
+      setName(doc.data().Name);
+    });
+  };
+  useEffect(() => {
+    fun();
+  }, []);
+
   return (
     <React.Fragment>
       <Box sx={{ display: "flex", alignItems: "center", textAlign: "center" }}>
@@ -44,7 +69,7 @@ export default function Profile() {
             aria-haspopup="true"
             aria-expanded={open ? "true" : undefined}
           >
-            <Avatar sx={{ width: 32, height: 32 }}>M</Avatar>
+            <Avatar sx={{ width: 32, height: 32 }}>{name[0]}</Avatar>
           </IconButton>
         </Tooltip>
       </Box>
@@ -84,7 +109,8 @@ export default function Profile() {
         anchorOrigin={{ horizontal: "right", vertical: "bottom" }}
       >
         <MenuItem onClick={() => navigate("/profilesettings")}>
-          <Avatar /> Profile
+          <Avatar /> 
+          <ListItemText primary={name} secondary={userEmail}/>
         </MenuItem>
         <Divider />
         <MenuItem onClick={logOut}>

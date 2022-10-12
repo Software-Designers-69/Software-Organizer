@@ -1,5 +1,4 @@
-import * as React from "react";
-import { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import Box from "@mui/material/Box";
 import Avatar from "@mui/material/Avatar";
 import Menu from "@mui/material/Menu";
@@ -18,12 +17,22 @@ import AddSharpIcon from "@mui/icons-material/AddSharp";
 import Paper from "@mui/material/Paper";
 import { Link } from "react-router-dom";
 import { db } from "../../../firebase";
-import { doc, getDoc } from "firebase/firestore";
+import {
+  doc,
+  getDoc,
+  getDocs,
+  collection,
+  query,
+  where,
+} from "firebase/firestore";
+import { EmailContext } from "../../../context";
 import "./Project.css";
 
 export default function Project() {
   const [project, setProject] = useState([]);
   const [anchorEl, setAnchorEl] = React.useState(null);
+  const { userEmail, setUserEmail } = useContext(EmailContext);
+
   window.addEventListener("load", () => {
     fun();
   });
@@ -36,12 +45,16 @@ export default function Project() {
   };
 
   const fun = async () => {
-    const docRef = doc(db, "Projects", "sFCPzbCBQpVCHwOkY3MB");
-    const docSnap = await getDoc(docRef);
+    const querySnapshot = await getDocs(collection(db, "Projects"));
 
-    if (docSnap.exists()) {
-      setProject([...project, docSnap.data()]);
-    }
+    querySnapshot.forEach((doc) => {
+      // doc.data() is never undefined for query doc snapshots
+      // console.log(doc.id, " => ", doc.data());
+      if (doc.data().ProjectMembers.includes(userEmail)) {
+        setProject([...project, doc.data()]);
+        console.log(doc.data().ProjectMembers);
+      }
+    });
   };
   useEffect(() => {
     fun();
@@ -124,7 +137,11 @@ export default function Project() {
           </Link>
         </MenuItem>
         <MenuItem>
-          <Button sx={{ bgcolor: "#FF6666" }} href="createprojects" variant="contained">
+          <Button
+            sx={{ bgcolor: "#FF6666" }}
+            href="createprojects"
+            variant="contained"
+          >
             <AddSharpIcon fontSize="small" />
             Create new project
           </Button>

@@ -4,40 +4,35 @@ import {
   collection,
   getDocs,
   setDoc,
+  updateDoc,
   doc,
   deleteDoc,
 } from "firebase/firestore";
 import { Link, useNavigate, useLocation } from "react-router-dom";
 
-import "./Wiki.css";
+import "./AddMember.css";
 import Header from "../../Components/Header/Header";
 import Footer from "../../Components/Footer/Footer";
 import { AiOutlineConsoleSql } from "react-icons/ai";
 import Lion from "../../images/Lion-white.png";
 
-function Wiki() {
+function AddMember() {
   const { state } = useLocation();
   let navigate = useNavigate();
   const { project } = state;
 
-  const [wiki, setWiki] = useState(project.ProjectWiki);
-  const Setwiki = (event) => {
-    setWiki(event.target.value);
+  const [name, setName] = useState('');
+  const Setname = (event) => {
+    setName(event.target.value);
   };
 
-  const [projects, setProjects] = useState([]); //array to store user's projects'
-  const projectRef = collection(db, "Projects"); //collection reference to all projects
-
-  const editWiki = async (wiki) => {
-    //handles adding a wiki to database
-    await setDoc(
-      doc(db, "Projects", project.id),
-      {
-        ProjectWiki: wiki,
-      },
-      { merge: true }
-    );
-    alert("Wiki edited");
+  const addMember = async () => {
+    //handles adding a new member to the project/team
+    const prref = doc(db, "Projects", project.id);
+    await updateDoc(prref, {
+      ProjectMembers: [...project.ProjectMembers, name],
+    });
+    alert("Member Added");
     goBack();
   };
 
@@ -53,14 +48,13 @@ function Wiki() {
       <div class="body">
         <textarea
           type="text"
-          className="editinput"
-          defaultValue={project.ProjectWiki}
-          onChange={Setwiki}
-          placeholder="Wiki..."
+          className="editmember"
+          onChange={Setname}
+          placeholder="New member..."
         />
 
-        <button className="edtbtn" onClick={() => editWiki(wiki)}>
-          Save
+        <button className="edtbtnmember" onClick={addMember}>
+          Add
         </button>
       </div>
       <Footer />
@@ -68,4 +62,4 @@ function Wiki() {
   );
 }
 
-export default Wiki;
+export default AddMember;

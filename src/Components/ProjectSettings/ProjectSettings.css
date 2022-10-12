@@ -1,0 +1,47 @@
+.deletediv {
+    width: 80vw;
+    text-align: left;
+    margin-top: 50px;
+}
+
+.projectdiv{
+    width: 80vw;
+    text-align:left;
+}
+
+/*----------------------------------------------------------------*/
+
+.projectin{
+    font-family : 'Inter';
+    padding-left: 10px;
+    font-size: 16px;
+    border-radius: 3px;
+    height : 30px;
+}
+
+.deletep {
+    background-color: red;
+    border: 0px;
+    border-width: 1px 1px 1px 1px;
+    height: 30px;
+    width: 180px;
+    border-radius: 30px;
+    font-family: 'Trebuchet MS';
+    font-size: 18px;
+    cursor: pointer;
+
+}
+
+.rename {
+    background-color: coral;
+    border: 0px;
+    border-width: 1px 1px 1px 1px;
+    height: 30px;
+    width: 180px;
+    margin-top: 20px;
+    border-radius: 30px;
+    font-family: 'Trebuchet MS';
+    font-size: 18px;
+    cursor: pointer;
+
+}

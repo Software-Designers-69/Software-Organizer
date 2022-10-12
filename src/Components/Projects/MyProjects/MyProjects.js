@@ -1,5 +1,6 @@
 import * as React from "react";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
+import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
 import List from "@mui/material/List";
 import ListItem from "@mui/material/ListItem";
@@ -14,13 +15,18 @@ import Divider from "@mui/material/Divider";
 import Header from "../../Header/Header";
 import { doc, getDoc, getDocs, collection } from "firebase/firestore";
 import { db } from "../../../firebase";
+import { EmailContext } from "../../../context";
+
 import "./MyProjects.css";
 
 export default function CheckboxListSecondary() {
   const [project, setProject] = useState([]);
   const [checked, setChecked] = React.useState([1]);
+  const { userEmail, setUserEmail } = useContext(EmailContext);
+  const navigate = useNavigate();
+
   window.addEventListener("load", () => {
-    fun1();
+    getProjects();
   });
   const handleToggle = (value) => () => {
     const currentIndex = checked.indexOf(value);
@@ -35,26 +41,21 @@ export default function CheckboxListSecondary() {
     setChecked(newChecked);
   };
 
-  const fun1 = async () => {
+  const getProjects = async () => {
     const querySnapshot = await getDocs(collection(db, "Projects"));
     const dt = [];
     querySnapshot.forEach((doc) => {
-      dt.push(doc.data());
+      if (doc.data().ProjectMembers.includes(userEmail)) {
+        dt.push(doc.data());
+      }
     });
     setProject(dt);
   };
-  // const fun = async () => {
-  //   const docRef = doc(db, "Projects", "4oYuLCC89oM4nekdkqhI");
-  //   const docSnap = await getDoc(docRef);
 
-  //   if (docSnap.exists()) {
-  //     setProject([...project, docSnap.data()]);
-  //   }
-  // };
   useEffect(() => {
-    fun1();
+    getProjects();
   }, []);
-
+  
   return (
     <div>
       <Header />
@@ -71,7 +72,9 @@ export default function CheckboxListSecondary() {
           <Button
             sx={{ bgcolor: "#FF6666", borderRadius: 4 }}
             variant="contained"
-            href="createprojects"
+            onClick={() => {
+              navigate("/scrum");
+            }}
           >
             New project
           </Button>
@@ -94,12 +97,12 @@ export default function CheckboxListSecondary() {
                   secondary={
                     project.length != 0
                       ? element.ProjectMembers.map((member, index) => {
-                        let v = "";
-                        index == element.ProjectMembers.length - 1
-                          ? (v = ".")
-                          : (v = ", ");
-                        return member + v;
-                      })
+                          let v = "";
+                          index == element.ProjectMembers.length - 1
+                            ? (v = ".")
+                            : (v = ", ");
+                          return member + v;
+                        })
                       : "..."
                   }
                 />

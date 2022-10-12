@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 .bloc-tabs {
     display: flex;
     justify-content: space-evenly
@@ -99,4 +100,107 @@ button {
 }
 .active-content {
     display: block;
+=======
+.bloc-tabs {
+    display: flex;
+    justify-content: space-evenly
+}
+
+.liondiv {
+    background-color: #8E0808;
+    height: 87px;
+    display: flex;
+    justify-content: flex-start;
+    padding-left: 50px;
+    width: 100%;
+}
+
+.side-content{
+    background-color: #8E0808;
+    position:fixed;
+    left:0;
+    color: white;
+    padding-right: 50px;
+    min-width: 20%;
+    height: 100vh ;
+    text-align: left;
+    top: 0;
+}
+
+.side-content h3 {
+    padding-left: 10px;
+    margin-bottom: 30px;
+}
+
+.side-content h6 {
+    padding-left: 10px;
+    cursor: pointer;
+}
+
+/*-----------------------------------------------------------------*/
+
+.tabs {
+
+    padding: 15px;
+    text-align: center;
+    min-width: 10vw;
+    background: rgba(128, 128, 128, 0.075);
+    cursor: pointer;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.274);
+    box-sizing: content-box;
+    position: relative;
+    outline: none;
+}
+
+.tabs:not(:last-child) {
+    border-right: 1px solid rgba(0, 0, 0, 0.274);
+}
+
+.active-tabs {
+    background: #e5e0d7;
+    border-bottom: 1px solid transparent;
+}
+
+.active-tabs::before {
+    content: "";
+    display: block;
+    position: absolute;
+    top: -5px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: calc(100% + 2px);
+    height: 5px;
+    background: #8E0808;
+}
+
+
+
+button {
+    border: none;
+
+}
+
+.content-tabs {
+    flex-grow: 1;
+}
+
+.content {
+    padding: 20px;
+    height: 100%;
+    display: none;
+}
+
+.content h2 {
+    padding: 0px 0 5px 0px;
+}
+
+.content hr {
+    width: 100px;
+    height: 2px;
+    background: #222;
+    margin-bottom: 5px;
+}
+.active-content {
+    display: block;
+>>>>>>> main
 }

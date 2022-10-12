@@ -68,6 +68,10 @@ function Scrum() {
       { merge: true }
     );
     routeChange();
+    
+    setTeamName('');
+    setProjectDesc('');
+    setProjectName('');
   };
 
   return (
@@ -75,9 +79,6 @@ function Scrum() {
       <Header />
       <div className="tittle">
         <Typography variant="h5">Create Project</Typography>
-        <Typography variant="body1">
-          Choose template for your project
-        </Typography>
       </div>
 
       <div className="project-details">
@@ -88,6 +89,7 @@ function Scrum() {
           }}
           required
           label="Project Name"
+          value={projectName}
         />
         <TextField
           onChange={(event) => {
@@ -96,6 +98,7 @@ function Scrum() {
           multiline
           required
           label="Team Name"
+          value={teamName}
         />
         <TextField
           onChange={(event) => {
@@ -105,6 +108,7 @@ function Scrum() {
           multiline
           required
           label="Project Description"
+          value={projectDesc}
         />
         <Button
           className="btn-create-project"

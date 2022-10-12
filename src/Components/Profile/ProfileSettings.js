@@ -119,7 +119,10 @@ function ProfileSettings(props) {
       },
       { merge: true }
     );
-    alert("Field(s) updated.")
+    alert("Field(s) has been updated.");
+    setName("");
+    setSurname("");
+    setEMAIL("");
   };
 
   useEffect(() => {
@@ -187,21 +190,25 @@ function ProfileSettings(props) {
             <div>
               <Typography>Name</Typography>
               <TextField
+              id="newname"
                 size="small"
                 placeholder="New name"
                 onChange={(event) => {
                   setName(event.target.value);
                 }}
+                value={name}
               />
             </div>
             <div>
               <Typography>Surname</Typography>
               <TextField
+              id="newsurname"
                 size="small"
                 placeholder="New surname"
                 onChange={(event) => {
                   setSurname(event.target.value);
                 }}
+                value={surname}
               />
             </div>
 
@@ -239,6 +246,7 @@ function ProfileSettings(props) {
                 onChange={(event) => {
                   setEMAIL(event.target.value);
                 }}
+                value={EMAIL}
               />
             </div>
             <Button

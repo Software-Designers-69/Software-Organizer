@@ -1,0 +1,21 @@
+.e-kanban .e-kanban-table {
+    background-color: #FFFBF4;
+}
+
+.e-kanban .e-kanban-header .e-header-cells{
+    background-color: #F5EBD8;
+}
+
+.e-kanban .e-kanban-header .e-header-cells .e-header-text{
+    color: #8E0808;
+    font-weight:bold;
+}
+
+.e-kanban .e-kanban-content {
+    background-color:#FFFBF4;
+}
+
+
+.e-kanban .e-kanban-table.e-content-table .e-card.e-selection{
+    background-color:#F5EBD8;
+}
